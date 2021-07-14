@@ -307,16 +307,154 @@
 
 // Задание 3
 
-const salaryOfJuniorDeveloper = 500;
-const numberOfJuniorDevelopers = 3;
-let tapPercentage = 13;
-let totalJuniorDeveloperSalary = 0;
+// const salaryOfJuniorDeveloper = 500;
+// const numberOfJuniorDevelopers = 3;
+// let tapPercentage = 13;
+// let totalJuniorDeveloperSalary = 0;
 
-for (let i = 0; i < numberOfJuniorDevelopers; i += 1) {
-	console.log(totalJuniorDeveloperSalary);
+// for (let i = 0; i < numberOfJuniorDevelopers; i += 1) {
+// 	console.log(totalJuniorDeveloperSalary);
 
-	const salaryWithTax =
-		salaryOfJuniorDeveloper - (salaryOfJuniorDeveloper * tapPercentage) / 100;
-	totalJuniorDeveloperSalary += salaryWithTax;
-}
-console.log("totalJuniorDeveloperSalary", totalJuniorDeveloperSalary);
+// 	const salaryWithTax =
+// 		salaryOfJuniorDeveloper - (salaryOfJuniorDeveloper * tapPercentage) / 100;
+// 	totalJuniorDeveloperSalary += salaryWithTax;
+// }
+// console.log("totalJuniorDeveloperSalary", totalJuniorDeveloperSalary);
+
+// function getSumOfNumbers(number, type = "odd") {
+// 	let sum = 0;
+
+// 	if (type === "even") {
+// 		for (let i = 1; i <= number; i += 1) {
+// 			if (i % 2 === 0) {
+// 				console.log(i);
+// 				sum += i;
+// 			}
+// 		}
+// 	} else if (type === "odd") {
+// 		for (let i = 1; i <= number; i += 1) {
+// 			if (i % 2 !== 0) {
+// 				console.log(i);
+// 				sum += i;
+// 			}
+// 		}
+// 	} else if (type === "") {
+// 		for (let i = 1; i <= number; i += 1) {
+// 			sum += i;
+// 		}
+// 	}
+
+// 	return sum;
+// }
+
+// console.log(getSumOfNumbers(10, "even"));
+
+// function getSumOfNumbers(number, type = "odd") {
+// 	let sum = 0;
+// }
+
+// Задание 1
+
+// function getName1(name) {
+// 	return `Имя равно ${name}`;
+// }
+
+// const getName2 = function (name) {
+// 	return `Имя равно ${name}`;
+// };
+
+// const getName3 = (name) => `Имя равно ${name}`;
+
+// console.log(getName1("Bob"));
+// console.log(getName2("Bob"));
+// console.log(getName3("Bob"));
+
+// Задание 2
+
+// function getSumOfNumbers(number, type = "odd") {
+// 	let sum = 0;
+
+// 	if (type === "even") {
+// 		for (let i = 1; i <= number; i += 1) {
+// 			if (i % 2 === 0) {
+// 				sum += i;
+// 			}
+// 		}
+// 	} else if (type === "odd") {
+// 		for (let i = 1; i <= number; i += 1) {
+// 			if (i % 2 !== 0) {
+// 				sum += i;
+// 			}
+// 		}
+// 	} else if (type === "") {
+// 		for (let i = 1; i <= number; i += 1) {
+// 			sum += i;
+// 		}
+// 	}
+
+// 	return sum;
+// }
+
+// console.log(getSumOfNumbers(10, "even"));
+
+// Задание 3
+
+// function getDivisors(number = 1) {
+// 	if (number < 0 || !Number.isInteger(number)) {
+// 		alert(`${number} должен быть целым числом и больше нуля!`);
+// 	} else {
+// 		let counter = 0;
+// 		for (let i = 0; i <= number; i += 1) {
+// 			if (number % i === 0) counter += 1;
+// 		}
+// 		return counter;
+// 	}
+// }
+
+// console.log(getDivisors(3.1));
+
+// Задание 4
+
+// function checkQuestionAnswer(question, correctAnswer) {
+// 	const answer = prompt(question).toLowerCase().trim();
+// 	correctAnswer.toLowerCase() === answer
+// 		? alert("Ответ верный!")
+// 		: alert("Ответ неверный.");
+// }
+
+// checkQuestionAnswer("Арбуз это фрукт или ягода?", "Ягода");
+// checkQuestionAnswer("Сколько в среднем зубов у взрослого человека?", "32");
+// checkQuestionAnswer("Как называется самая маленькая птица в мире?", "Калибри");
+
+// Дополнительное задание
+
+const showSuccessMessage = function (message) {
+	console.log(message);
+};
+
+const showErrorMessage = function (message) {
+	console.error(message);
+};
+
+const checkTextOnErrorSymbol = function (
+	text,
+	errorSymbol,
+	succsessCallback,
+	errorCallback
+) {
+	let errorHappened = false;
+
+	for (let i = 0; i <= text.length; i += 1) {
+		if (text.toLowerCase()[i] === errorSymbol) {
+			errorCallback(
+				`Найден запрещенный символ "${errorSymbol}" под индексом ${i}.`
+			);
+			errorHappened = true;
+		}
+	}
+	if (!errorHappened)
+		succsessCallback("В данном тексте нет запрещенных символов");
+};
+
+const text = "Привет! Как дела! Давно мы с тобой не виделись.";
+checkTextOnErrorSymbol(text, "п", showSuccessMessage, showErrorMessage);
