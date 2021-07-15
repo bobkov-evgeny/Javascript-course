@@ -428,33 +428,154 @@
 
 // Дополнительное задание
 
-const showSuccessMessage = function (message) {
-	console.log(message);
-};
+// const showSuccessMessage = function (message) {
+// 	console.log(message);
+// };
 
-const showErrorMessage = function (message) {
-	console.error(message);
-};
+// const showErrorMessage = function (message) {
+// 	console.error(message);
+// };
 
-const checkTextOnErrorSymbol = function (
-	text,
-	errorSymbol,
-	succsessCallback,
-	errorCallback
-) {
-	let errorHappened = false;
+// const checkTextOnErrorSymbol = function (
+// 	text,
+// 	errorSymbol,
+// 	succsessCallback,
+// 	errorCallback
+// ) {
+// 	let errorHappened = false;
 
-	for (let i = 0; i <= text.length; i += 1) {
-		if (text.toLowerCase()[i] === errorSymbol) {
-			errorCallback(
-				`Найден запрещенный символ "${errorSymbol}" под индексом ${i}.`
-			);
-			errorHappened = true;
-		}
-	}
-	if (!errorHappened)
-		succsessCallback("В данном тексте нет запрещенных символов");
-};
+// 	for (let i = 0; i <= text.length; i += 1) {
+// 		if (text.toLowerCase()[i] === errorSymbol) {
+// 			errorCallback(
+// 				`Найден запрещенный символ "${errorSymbol}" под индексом ${i}.`
+// 			);
+// 			errorHappened = true;
+// 		}
+// 	}
+// 	if (!errorHappened)
+// 		succsessCallback("В данном тексте нет запрещенных символов");
+// };
 
-const text = "Привет! Как дела! Давно мы с тобой не виделись.";
-checkTextOnErrorSymbol(text, "п", showSuccessMessage, showErrorMessage);
+// const text = "Привет! Как дела! Давно мы с тобой не виделись.";
+// checkTextOnErrorSymbol(text, "п", showSuccessMessage, showErrorMessage);
+
+// Задание 1
+
+// function getSumOfSequence(number) {
+// 	let arr = [];
+// 	for (let i = 1; i <= number; i += 1) {
+// 		arr.push(i);
+// 	}
+
+// 	return arr[0] + arr[arr.length - 1];
+// }
+
+// console.log(getSumOfSequence(5));
+
+// Задание 2
+
+// const peopleWaiting = [
+// 	"Кристина",
+// 	"Олег",
+// 	"Кирилл",
+// 	"Мария",
+// 	"Светлана",
+// 	"Артем",
+// 	"Глеб",
+// ];
+
+// peopleWaiting.shift();
+// peopleWaiting.shift();
+
+// function giveParcel() {
+// 	let person = peopleWaiting.shift();
+// 	alert(
+// 		`${person} получил(а) посылку. В очереди осталось ${peopleWaiting.length} человек.`
+// 	);
+// }
+
+// const leaveQueueWithoutParcel = () => {
+// 	let person = peopleWaiting.shift();
+// 	alert(`${person} не получил(а) посылку и ушел(ла) из очереди.`);
+// };
+
+// giveParcel();
+// leaveQueueWithoutParcel();
+// leaveQueueWithoutParcel();
+// leaveQueueWithoutParcel();
+// leaveQueueWithoutParcel();
+// Не уверен что правильно понял задание
+
+// Задание 3
+
+// const numbers = [10, 4, 100, -5, 54, 2];
+
+// let result = 0;
+// for (let i = 0; i < numbers.length; i += 1) {
+// 	result += numbers[i] ** 3;
+// }
+
+// let result = 0;
+// for (let number of numbers) {
+// 	result += number ** 3;
+// }
+
+// let result = 0;
+// numbers.forEach((number) => {
+// 	result1 += number ** 3;
+// });
+// console.log(result);
+
+// const result = numbers.reduce((acc, number) => (acc += number ** 3), 0);
+// console.log(result);
+
+// Задание 4
+
+// const coffees = ["Latte", "Cappuccino", "Americano"];
+// const coffeeName = prompt("Поиск кофе по названию:").trim().toLowerCase();
+// const searchWord = `${coffeeName[0].toUpperCase()}${coffeeName.slice(1)}`;
+
+// coffees.includes(searchWord)
+// 	? alert(
+// 			`Держите ваш любимый кофе ${searchWord}. Он ${
+// 				coffees.indexOf(searchWord) + 1
+// 			}-й по популярности в нашей кофейне.`
+// 	  )
+// 	: alert("К сожалению, такого вида кофе нет в наличии");
+
+// Задание 5
+
+// const coffees = ["Latte", "Cappuccino", "Americano"];
+// const prices = [1.5, 1, 2];
+
+// const updatedPrices = prices.map((price) => price + 0.5);
+
+// coffees.forEach((coffee, index) =>
+// 	alert(`Кофе ${coffee} сейчас стоит ${updatedPrices[index]} евро`)
+// );
+
+// Задание 6
+
+// const clientsEstimations = [];
+// function askClientToGiveEstimation() {
+// 	const rating = +prompt("Как вы оцениваете нашу кофейню от 1 до 10?");
+// 	if (!isNaN(rating) && rating >= 0 && rating <= 10)
+// 		clientsEstimations.push(rating);
+// }
+
+// for (let i = 1; i <= 5; i += 1) {
+// 	askClientToGiveEstimation();
+// }
+
+// const goodEstimations = clientsEstimations
+// 	.filter((rating) => rating > 5)
+// 	.reduce((acc) => (acc += 1), 0);
+// const notGoodEstimations = clientsEstimations
+// 	.filter((rating) => rating <= 5)
+// 	.reduce((acc) => (acc += 1), 0);
+
+// alert(
+// 	`Всего положительных оценок: ${goodEstimations}; Всего отцирательных оценок: ${notGoodEstimations}.`
+// );
+
+// Задание 7
