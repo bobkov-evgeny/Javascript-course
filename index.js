@@ -579,3 +579,60 @@
 // );
 
 // Задание 7
+
+// const goals = [8, 1, 1, 3, 12, -1, 5];
+
+// 1;
+// const bestGameIndex = goals.indexOf(
+// 	goals.reduce((acc, game) => (acc > game ? acc : game), 0)
+// );
+// alert(
+// 	`Самый результативный матч был под номером ${
+// 		bestGameIndex + 1
+// 	}. В нем было забито ${goals[bestGameIndex]} гол(ов).`
+// );
+
+// 2;
+// const worstGamesIndexes = [];
+// const worstGameResult = [...goals]
+// 	.sort((a, b) => a - b)
+// 	.filter((game) => game > 0)[0];
+
+// goals.forEach((game, i) => {
+// 	if (game === worstGameResult) worstGamesIndexes.push(i + 1);
+// });
+
+// alert(
+// 	`Самые не результативные матчи были под номерами ${worstGamesIndexes.join(
+// 		", "
+// 	)}. В каждом из них было забито по ${worstGameResult} мячу(а).`
+// );
+
+// 3;
+// alert(
+// 	`Общее количество голов за сезон равно ${goals.reduce(
+// 		(acc, game) => (game > 0 ? (acc += game) : acc),
+// 		0
+// 	)}`
+// );
+
+// 4;
+// goals.filter((game) => game < 0).length > 0
+// 	? alert(`Были автоматические поражения: да`)
+// 	: alert(`Были автоматические поражения: нет`);
+
+// 5;
+// alert(
+// 	`Среднее количество голов за матч равно ${(
+// 		goals.reduce((acc, game) => (acc += game), 0) / goals.length
+// 	).toFixed(1)}`
+// );
+
+// 6;
+// alert(
+// 	`Голы отсортированы в порядке возрастания: ${[...goals]
+// 		.sort((a, b) => a - b)
+// 		.join("; ")}`
+// );
+
+// console.log(`Итоговый массив goals не модифицирован: ${goals}`);
