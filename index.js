@@ -986,3 +986,113 @@ console.log(hero, enemy);
 */
 
 // Date
+
+// const date = new Date();
+// console.log(date);
+// 0(Январь) - 11(декабрь);
+
+// const newDate = new Date(2000, 1, 10, 11, 55, 5, 5000);
+// console.log(newDate);
+
+// console.log("year", newDate.getFullYear());
+// console.log("month", newDate.getMonth());
+
+// getHours
+// getMinutes
+// getSeconds
+// getMiliseconds
+
+// //День недели 0 (воскресеье) - 6 (суббота)
+// console.log("day", newDate.getDay());
+
+// newDate.setFullYear(2050);
+// // setHours
+// // setMinutes
+// // setMonth
+// console.log(newDate.getFullYear());
+
+// const date1 = new Date(2005, 4, 20);
+// const date2 = new Date(2006, 4, 10);
+
+// console.log("date1", date1.getTime());
+// console.log("date2", date2.getTime());
+
+// const difference = date2.getTime() - date1.getTime();
+// console.log("minutes", difference / 1000 / 60);
+
+// const startTime = Date.now();
+// for (let i = 0; i < 10000000; i += 1) {}
+// const endTime = Date.now();
+// console.log(endTime - startTime);
+
+// Задание 1
+/*
+const birthDate = new Date(1996, 4, 7);
+const getDateFormat = function (date, separator) {
+	const textDate = `0${date.getDate()}${separator}0${
+		date.getMonth() + 1
+	}${separator}${date.getFullYear()}`;
+	console.log(textDate);
+};
+
+getDateFormat(birthDate, ".");
+*/
+// Задание 2
+/*
+const getDaysBeforeBirthday = function (nextBirthdayDate) {
+	const convertMsToDays = (miliseconds) =>
+		Math.round(miliseconds / 1000 / 60 / 60 / 24);
+	return convertMsToDays(nextBirthdayDate - Date.now());
+};
+
+console.log(getDaysBeforeBirthday(new Date(2022, 4, 7)));
+*/
+// Задание 3
+/*
+const today = Date.now();
+const addDays = (date, days = 1) => new Date(date + days * 24 * 60 * 60 * 1000);
+
+console.log(addDays(today, 10));
+*/
+// Дополнительное задание
+
+// const peopleWithVisa = [
+// 	{
+// 		firstName: "Stasia",
+// 		lastName: "Ward",
+// 		criminalRecord: true,
+// 		passportExpiration: "19.06.2023",
+// 	},
+// 	{
+// 		firstName: "Elliot",
+// 		lastName: "Baker",
+// 		criminalRecord: false,
+// 		passportExpiration: "04.06.2021",
+// 	},
+// 	{
+// 		firstName: "Leighann",
+// 		lastName: "Scott",
+// 		criminalRecord: true,
+// 		passportExpiration: "31.07.2022",
+// 	},
+// 	{
+// 		firstName: "Nick",
+// 		lastName: "Pop",
+// 		criminalRecord: false,
+// 		passportExpiration: "31.12.2021",
+// 	},
+// ];
+
+// const allowVisa = (arr) =>
+// 	arr.filter((person) => {
+// 		const passportExpirationDate = new Date(
+// 			person.passportExpiration
+// 				.split(".")
+// 				.reverse()
+// 				.map((number) => +number)
+// 		);
+// 		return passportExpirationDate > Date.now() && !person.criminalRecord;
+// 	});
+
+// const result = allowVisa(peopleWithVisa);
+// console.log("result", result);
