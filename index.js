@@ -636,3 +636,353 @@
 // );
 
 // console.log(`Итоговый массив goals не модифицирован: ${goals}`);
+
+// Задание 8
+
+// function getMathResult(expression) {
+//   const mathSignes = [`>`, `<`, `=`, `+`, `-`, `*`, `/`];
+//   expression = expression.filter(element => mathSignes.includes(element) || !isNaN(element))
+
+//   if(!mathSignes.includes(expression[1]) || expression.length < 3) return `Ошибка`;
+
+//   switch(expression[1]) {
+//     case '>':
+//       return +expression[0] > +expression[2];
+
+//     case '<':
+//       return +expression[0] < +expression[2];
+
+//     case '=':
+//       return +expression[0] == +expression[2];
+
+//     case '+':
+//       return +expression[0] + +expression[2];
+
+//     case '-':
+//       return +expression[0] - +expression[2];
+
+//     case '*':
+//       return +expression[0] * +expression[2];
+
+//     case '/':
+//       return +expression[0] / +expression[2];
+//   }
+// }
+
+// console.log(getMathResult([`200`, `+`, 300]))
+// console.log(getMathResult([`20`, `-`, `5`]))
+// console.log(getMathResult([100, `/`, 100]))
+// console.log(getMathResult([2, `-`, 2]))
+// console.log(getMathResult([`5`, `>`, `10`]))
+// console.log(getMathResult([`5`, `<`, `10`]))
+// console.log(getMathResult([`1`, `=`, 1]))
+// console.log(getMathResult([`1`, `**`, 1]))
+
+// Дополнительное задание 1
+
+// let matrix = [];
+
+// for(let i = 1; i <= 3; i+=1) {
+//   let tempMatrix = []
+
+//   for(let i = 1; i<=5; i+=1) {
+//     tempMatrix.push(i);
+//   }
+
+//   matrix.push(tempMatrix);
+// }
+
+// console.log(matrix);
+
+// // Дополнительное задание 2
+
+// const matrix = [
+//     [ 1, 2, 3 ],
+//     [ 4, 5, 6 ],
+//     [ 7, 8, 9 ],
+//  ];
+
+// const mergedMatrix = matrix.reduce((acc, el) => acc.concat(el), [])
+// console.log(mergedMatrix)
+
+// function getSumOfNumbers(number, type = 'odd') {
+//   const numbersArr = [];
+//   for(let i = 1; i <=number; i+=1) {
+//     numbersArr.push(i)
+//   }
+
+//   switch(type) {
+//     case 'even': return numbersArr.reduce((acc, number) => number%2===0 ? acc+=number : acc);
+//     case 'odd': return numbersArr.reduce((acc, number) => number%2!==0 ? acc+=number : acc);
+//     case '': return numbersArr.reduce((acc, number) => acc+=number)
+//   }
+
+// }
+
+// console.log(getSumOfNumbers(10, ''))
+
+// getSumOfNumbers принимает в себя 2 параметра: number и type. Параметр number - это число, по которому будет считаться сумма. То есть, если было передано число 10, то функция должна посчитать сумму от 0 до 10 (0 + 1 + 2 + … + 10). Параметрtype отвечает за выбор чисел для подсчета суммы. Он может быть 3-мя значениями: “odd”, “even” и “”. Если type равняется “odd”, то в сумму должны входить только нечетные числа, “even” - четные числа, пустая строка “” - все числа. По умолчанию параметр type должен быть равен odd.
+
+// Функция getSumOfNumbers должна возвращаться итоговую сумму с помощью return.
+
+// number = 10, type = ‘odd’. Возвращает 25.
+// number = 10, type = ‘even’. Возвращает 30.
+// number = 10, type = ‘’. Возвращает 55.
+
+/*
+// Задание 1
+
+const users = [{
+       username: 'David',
+       status: 'online',
+       lastActivity: 10
+   }, {username: 'Lucy',
+       status: 'offline',
+       lastActivity: 22
+   }, {username: 'Bob',
+       status: 'online',
+       lastActivity: 104
+   }
+]
+
+const onlineUsers = users.filter(user => user.status === 'online')
+const usersOnlineNames = onlineUsers.map(user => user.username)
+
+alert(`Сейчас в онлайн следующие пользователи: ${usersOnlineNames.join(', ')}`)
+
+// Задание 2
+
+const student = {
+   fullName: 'Максим',
+   experienceInMonths: 12,
+   stack: ['HTML', 'CSS', 'JavaScript', 'React'],
+}
+
+const giveJobToStudent = function(student, jobName) {
+  alert(`Поздравляем! У студента ${student.fullName} появилась новая работа! Теперь он ${jobName}`);
+  student.job = jobName;
+  return student;
+}
+
+const updatedStudent = giveJobToStudent(student, 'веб-разработчик');
+console.log(updatedStudent)
+
+// Задание 3
+
+const student = {
+   name: 'Maxim',
+   programmingLanguage: 'JavaScript',
+}
+
+const handleObjects = function(obj, key, action) {
+  switch(action) {
+
+    case 'get':
+      return obj[key];
+
+    case 'add':
+      obj[key] = '';
+      return obj;
+
+    case 'delete':
+      delete obj[key];
+      return obj;
+
+    default:
+      return obj;
+  }
+}
+
+const result = handleObjects(student, 'programmingLanguage', 'delete');
+console.log('result', result);
+
+// Задание 4
+
+const getKiller = function (suspectInfo, deadPeople) {
+	const suspects = Object.entries(suspectInfo);
+
+	function checkKiller(suspected, victims) {
+		const result = victims.map((name) =>
+			suspected.includes(name) ? true : false
+		);
+		return result.every((item) => item === true) ? true : false;
+	}
+
+	for (let i = 0; i < suspects.length; i += 1) {
+		if (checkKiller(suspects[i][1], deadPeople) === true)
+			alert(`Убийца ${suspects[i][0]}`);
+	}
+};
+
+getKiller(
+	{
+		James: ["Jacob", "Bill", "Lucas"],
+		Johnny: ["David", "Kyle", "Lucas"],
+		Peter: ["Lucy", "Kyle"],
+	},
+	["Lucas", "Bill"]
+);
+
+getKiller(
+	{
+		Brad: [],
+		Megan: ["Ben", "Kevin"],
+		Finn: [],
+	},
+	["Ben"]
+);
+
+// Задание 5
+
+function getRandomNumberInRange(min, max) {
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+const todaysWinner = {
+	prize: "10 000$",
+};
+
+const winnerApplicants = {
+	"001": {
+		name: "Максим",
+		age: 25,
+	},
+	201: {
+		name: "Светлана",
+		age: 20,
+	},
+	304: {
+		name: "Екатерина",
+		age: 35,
+	},
+};
+
+const getWinner = function (applicants, winnerObject) {
+	const participants = Object.values(applicants);
+	const winnerNumber = getRandomNumberInRange(
+		0,
+		Object.keys(applicants).length
+	);
+	winnerObject.name = participants[winnerNumber].name;
+	winnerObject.age = participants[winnerNumber].age;
+
+	return winnerObject;
+};
+
+const resultWinner = getWinner(winnerApplicants, todaysWinner);
+console.log("resultWinner", resultWinner); // { prize: '10 000$', name: 'Максим', age: 25 }
+
+// Задание 6
+
+const ordersArr = [4, 2, 1, 3];
+const people = [
+	{ id: 1, name: "Максим" },
+	{ id: 2, name: "Николай" },
+	{ id: 3, name: "Ангелина" },
+	{ id: 4, name: "Виталий" },
+];
+
+const giveTalonsInOrder = function (patients, orders) {
+	const result = [];
+	for (let order of orders) {
+		result.push(...patients.filter((item) => item.id === order));
+	}
+	return result;
+};
+
+const result = giveTalonsInOrder(people, ordersArr);
+console.log("result", result);
+
+/* Возвращает массив
+[
+   { id: 4, name: 'Виталий' },
+   { id: 2, name: 'Николай' },
+   { id: 1, name: 'Максим' },
+   { id: 3, name: 'Ангелина' }
+]
+
+
+// Дополнительное задание 1
+
+const groceries = {
+	"Orange Juice": {
+		price: 1.5,
+		discount: 10,
+	},
+	Chocolate: {
+		price: 2,
+		discount: 0,
+	},
+	// more items...
+};
+
+const shoppingBag = [
+	{ product: "Chocolate", quantity: 3 },
+	{ product: "Orange Juice", quantity: 23 },
+];
+
+const getTotalPriceOfShoppingBag = function (shoppingBag) {
+	const groceriesNames = Object.keys(groceries);
+	let totalPrice = 0;
+
+	for (let item of shoppingBag) {
+		for (let product of groceriesNames) {
+			if (item.product === product) {
+				const discount = groceries[product].discount;
+				let price = groceries[product].price;
+				if (discount) price = price * ((100 - discount) / 100);
+
+				totalPrice += price * item.quantity;
+			}
+		}
+	}
+	return totalPrice.toFixed(2);
+};
+
+const totalPrice = getTotalPriceOfShoppingBag(shoppingBag);
+console.log("totalPrice", totalPrice); // Возвращает 37.05
+
+// Дополнительное задание 2
+function getRandomNumberInRange(min, max) {
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+const hero = {
+	name: "Batman",
+	health: 100,
+	heatEnemy: (enemy) => (enemy.health -= 10),
+};
+
+const enemy = {
+	name: "Joker",
+	health: 100,
+	heatHero: (hero) => (hero.health -= 10),
+};
+
+const startGame = function (heroPlayer, enemyPlayer) {
+	while (heroPlayer.health > 0 && enemyPlayer.health > 0) {
+		switch (getRandomNumberInRange(0, 2)) {
+			case 0:
+				heroPlayer.heatEnemy(enemyPlayer);
+				console.log(
+					`${heroPlayer.name}(${heroPlayer.health}hp) hit ${enemyPlayer.name}(${enemyPlayer.health}hp)`
+				);
+				break;
+			case 1:
+				enemyPlayer.heatHero(heroPlayer);
+				console.log(
+					`${enemyPlayer.name}(${enemyPlayer.health}hp) hit ${heroPlayer.name}(${heroPlayer.health}hp)`
+				);
+				break;
+		}
+	}
+
+	const winner = enemyPlayer.health === 0 ? heroPlayer : enemyPlayer;
+	alert(`${winner.name} победил! У него осталось ${winner.health} здоровья`);
+};
+
+startGame(hero, enemy);
+console.log(hero, enemy);
+*/
+
+// Date
