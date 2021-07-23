@@ -1096,3 +1096,146 @@ console.log(addDays(today, 10));
 
 // const result = allowVisa(peopleWithVisa);
 // console.log("result", result);
+
+// Задание 1
+/*
+const student = {
+	stack: ["HTML"],
+	level: 1,
+	improveLevel() {
+		this.level++;
+		switch (true) {
+			case this.level === 2:
+				this.stack.push("CSS");
+				break;
+			case this.level === 3:
+				this.stack.push("JavaScript");
+				break;
+			case this.level === 4:
+				this.stack.push("React");
+				break;
+			case this.level === 5:
+				this.stack.push("NodeJS");
+				break;
+			case this.level > 5:
+				alert(`Студент выучил все технологии!`);
+				break;
+		}
+		return this;
+	},
+};
+
+student
+	.improveLevel()
+	.improveLevel()
+	.improveLevel()
+	.improveLevel()
+	.improveLevel();
+*/
+
+// Задание 2
+/*
+const dog = {
+	name: "Чарли",
+	type: "Собака",
+	makeSound() {
+		return "Гав-Гав";
+	},
+};
+
+const bird = {
+	name: "Петя",
+	type: "Воробей",
+	makeSound() {
+		return "Чик-чирик";
+	},
+};
+
+const makeDomestic = function (isDomestic) {
+	console.log(`${this.type} по имени ${this.name} говорит ${this.makeSound()}`);
+	this.isDomestic = isDomestic;
+	return this;
+};
+
+makeDomestic.bind(dog, true)();
+makeDomestic.call(bird, true);
+makeDomestic.apply(bird, [true]);
+*/
+
+// Задание 3
+/*
+const footballer = {
+	fullName: "Cristiano Ronaldo",
+	attack() {
+		console.log(`${this.fullName} сейчас с мячом и начинает атаку!`);
+	},
+	scoreGoal(sound) {
+		console.log(`${this.fullName} забил гол! Вот это да!`);
+		this.celebrate(sound);
+	},
+	celebrate(sound) {
+		console.log(sound);
+	},
+	goToSubstitution: function (newPlayer) {
+		console.log(
+			`${this.fullName} уходит на замену. На поле выходит ${newPlayer}`
+		);
+	},
+};
+
+const attack = footballer.attack.bind(footballer);
+const score = footballer.scoreGoal;
+const substitute = footballer.goToSubstitution;
+
+attack();
+score.call(footballer, "Сиииии");
+substitute.apply(footballer, ["Paulo Dibala"]);
+*/
+
+// Дополнительное задание
+
+const attacker = {
+	archer: 30,
+	footSoldier: 55,
+	cavalry: 10,
+	artillery: 3,
+	checkChancesToWin(defenderObject) {
+		//prettier-ignore
+		const currentAttackerArmy = Object.entries(this).filter(troops => !isNaN(troops[1]));
+		//prettier-ignore
+		const currentDefenderArmy = Object.entries(defenderObject).filter((troops) => !isNaN(troops[1]));
+		const maximumChances = currentDefenderArmy.length;
+		//prettier-ignore
+		const ourArmyChances = currentAttackerArmy.reduce((acc, troops, index) => troops[1] > currentDefenderArmy[index][1] ? (acc += 1) : acc, 0);
+
+		return [ourArmyChances, maximumChances];
+	},
+	improveArmy() {
+		//prettier-ignore
+		const currentArmy = Object.entries(this).filter((value) => !isNaN(value[1]));
+		for (let troops of currentArmy) {
+			this[troops[0]] += 5;
+		}
+	},
+	attack(defender) {
+		//prettier-ignore
+		const [ourArmyChances, maximumChances] = [...this.checkChancesToWin(defender)];
+		//prettier-ignore
+		if ((100 / maximumChances) * ourArmyChances > 70) alert(`Мы усилились! Мы несомненно победим! Наши шансы высоки!`);
+		else {
+			alert(`Наши шансы равны ${ourArmyChances}/${maximumChances}. Необходимо укрепление!`);
+			this.improveArmy();
+		}
+	},
+};
+
+const defender = {
+	archer: 33,
+	footSoldier: 50,
+	cavalry: 40,
+	artillery: 10,
+};
+
+attacker.attack(defender);
+attacker.attack(defender);
+attacker.attack(defender);
